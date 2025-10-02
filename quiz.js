@@ -29,11 +29,13 @@ const timerDiv = document.querySelector(".timer");
 const questionDiv = document.querySelector(".question");
 const optionsDiv = document.querySelector(".options");
 const options = document.querySelectorAll(".option");
-const scoreSpan = document.querySelector("#score span");
+const score = document.querySelector(".score");
 const button = document.querySelector(".button")
+
 
 let count = 5;
 let questionNumber = 0;
+let bharat = 0;
 
 printQuestionAndOptions(); //PRINTS FIRST QUESTION & OPTIONS
 
@@ -93,18 +95,27 @@ function printQuestionAndOptions() {
           }
         })
       }
+
+      options.forEach((q) => {
+        if (q.innerText === data[questionNumber].a) {
+          bharat++
+          score.innerHTML = bharat
+        }
+
+      })
     })
   })
 }
 
 button.addEventListener("click", () => {
-  timerDiv.innerHTML = 5;
+  // timerDiv.innerHTML = 5;
   count = 5;
   questionNumber++;
-printQuestionAndOptions(); //PRINTS FIRST QUESTION & OPTIONS
+  printQuestionAndOptions(); //PRINTS FIRST QUESTION & OPTIONS
 
 })
 // function resercounter() {
 
 // }
+
 

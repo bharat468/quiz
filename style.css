@@ -80,12 +80,18 @@ body {
   border-color: #6a11cb;
 }
 
-.score h2 {
-  display: none;
+.main{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 40px auto 0;
+
 }
 
+#score{
+
+}
 .button{
-  margin: 40px auto 0;
   padding: 5px 30px;
   background-color: green;
   border: none ;
