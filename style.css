@@ -28,6 +28,7 @@ body {
   position: relative;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   transition: 0.3s;
+  
 }
 
 #quiz:hover {
@@ -81,4 +82,14 @@ body {
 
 .score h2 {
   display: none;
+}
+
+.button{
+  margin: 40px auto 0;
+  padding: 5px 30px;
+  background-color: green;
+  border: none ;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
 }

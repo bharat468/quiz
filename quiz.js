@@ -30,6 +30,7 @@ const questionDiv = document.querySelector(".question");
 const optionsDiv = document.querySelector(".options");
 const options = document.querySelectorAll(".option");
 const scoreSpan = document.querySelector("#score span");
+const button = document.querySelector(".button")
 
 let count = 5;
 let questionNumber = 0;
@@ -50,6 +51,8 @@ let time = setInterval(() => {
     // NEXT QUESTION
     questionNumber++;
     printQuestionAndOptions();
+
+
   } else {
     count--;
     timerDiv.textContent = count;
@@ -69,10 +72,11 @@ function printQuestionAndOptions() {
 
   options.forEach((e) => {
     e.style.backgroundColor = ""
+    e.style.pointerEvents = "auto"
+
     e.addEventListener("click", () => {
 
       options.forEach((e) => {
-
         e.style.pointerEvents = "none"
       })
 
@@ -92,4 +96,14 @@ function printQuestionAndOptions() {
     })
   })
 }
+
+// button.addEventListener(() => {
+//   count = 5;
+//   questionNumber++;
+//   printQuestionAndOptions(); //PRINTS FIRST QUESTION & OPTIONS
+
+// })
+// function resercounter() {
+
+// }
 
