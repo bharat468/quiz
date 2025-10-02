@@ -62,18 +62,25 @@ function printQuestionAndOptions() {
   options.forEach(
     (option, index) => (option.innerText = data[questionNumber].opt[index])
   );
+  
   //   for (let i = 0; i < options.length; i++) {
   //     options[i].innerText = data[questionNumber].opt[i];
   //   }
 
   options.forEach((e) => {
-    e.style.color = ""
+    e.style.backgroundColor = ""
     e.addEventListener("click", () => {
       if (e.innerText === data[questionNumber].a) {
-        e.style.color = "green"
+        e.style.backgroundColor = "green"
       }
       else {
-        e.style.color = "red"
+        e.style.backgroundColor = "red"
+
+        options.forEach((o) =>{
+          if(o.innerText === data[questionNumber].a){
+            o.style.backgroundColor = "green"
+          }
+        })
       }
     })
   })
