@@ -97,12 +97,13 @@ function printQuestionAndOptions() {
   })
 }
 
-// button.addEventListener(() => {
-//   count = 5;
-//   questionNumber++;
-//   printQuestionAndOptions(); //PRINTS FIRST QUESTION & OPTIONS
+button.addEventListener("click", () => {
+  timerDiv.innerHTML = 5;
+  count = 5;
+  questionNumber++;
+printQuestionAndOptions(); //PRINTS FIRST QUESTION & OPTIONS
 
-// })
+})
 // function resercounter() {
 
 // }
