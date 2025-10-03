@@ -123,7 +123,9 @@ function scoreplus() {
 }
 
 function random() {
-    let rendomqusiton = Math.floor(Math.random * data[questionNumber].length)
+    let rendomqusiton = Math.floor(Math.random * data.length)
     console.log(rendomqusiton);
+    return random()
 }
+
 
