@@ -32,27 +32,25 @@ const options = document.querySelectorAll(".option");
 const score = document.querySelector(".score");
 const button = document.querySelector(".button")
 
-
+var newscore = 0
 let count = 5;
 let questionNumber = 0;
-let bharat = 0;
 
-printQuestionAndOptions(); //PRINTS FIRST QUESTION & OPTIONS
+printQuestionAndOptions();
+//PRINTS FIRST QUESTION & OPTIONS
 
 let time = setInterval(() => {
   if (count === 1) {
-    if (questionNumber === data.length) {
-      //question will empty
-      clearInterval(time);
-      timerDiv.style.display = "none";
-      questionDiv.style.display = "none";
-      optionsDiv.style.display = "none";
+    if (questionNumber >= data.length - 1) {
+      scoreplus()
+      return;
     }
     count = 5;
     timerDiv.textContent = 5;
+    questionNumber++
     // NEXT QUESTION
-    questionNumber++;
     printQuestionAndOptions();
+
 
 
   } else {
@@ -60,62 +58,65 @@ let time = setInterval(() => {
     timerDiv.textContent = count;
   }
 }, 1000);
-// clearInterval(time)
 
 function printQuestionAndOptions() {
+
   questionDiv.innerText = data[questionNumber].q;
-  options.forEach(
-    (option, index) => (option.innerText = data[questionNumber].opt[index])
-  );
-
-  //   for (let i = 0; i < options.length; i++) {
-  //     options[i].innerText = data[questionNumber].opt[i];
-  //   }
-
-  options.forEach((e) => {
-    e.style.backgroundColor = ""
-    e.style.pointerEvents = "auto"
-
-    e.addEventListener("click", () => {
-
-      options.forEach((e) => {
-        e.style.pointerEvents = "none"
-      })
-
-
-      if (e.innerText === data[questionNumber].a) {
-        e.style.backgroundColor = "green"
-      }
-      else {
-        e.style.backgroundColor = "red"
-
-        options.forEach((o) => {
-          if (o.innerText === data[questionNumber].a) {
-            o.style.backgroundColor = "green"
-          }
-        })
-      }
-
-      options.forEach((q) => {
-        if (q.innerText === data[questionNumber].a) {
-          bharat++
-          score.innerHTML = bharat
-        }
-
-      })
-    })
-  })
+  options.forEach((option, index) => {
+    option.innerText = data[questionNumber].opt[index]
+    option.style.backgroundColor = ""
+    option.style.pointerEvents = "auto"
+  });
 }
+//   for (let i = 0; i < options.length; i++) {
+//     options[i].innerText = data[questionNumber].opt[i];
+//   }
+options.forEach((e) => {
+  e.addEventListener("click", () => {
+
+    options.forEach((e) =>
+    (e.style.pointerEvents = "none"
+    ))
+
+
+    if (e.innerText === data[questionNumber].a) {
+      e.style.backgroundColor = "green";
+      newscore++
+      score.textContent = newscore
+      console.log(newscore);
+
+    }
+    else {
+      e.style.backgroundColor = "red"
+
+      options.forEach((o) => {
+        if (o.innerText === data[questionNumber].a) {
+          o.style.backgroundColor = "green"
+
+        }
+      })
+    }
+  })
+})
 
 button.addEventListener("click", () => {
-  // timerDiv.innerHTML = 5;
+  if (questionNumber >= data.length - 1) {
+    scorplus()
+    return;
+  }
   count = 5;
+  timerDiv.textContent = 5
   questionNumber++;
-  printQuestionAndOptions(); //PRINTS FIRST QUESTION & OPTIONS
+  printQuestionAndOptions();
 
 })
-// function resercounter() {
-
-// }
 
 
+
+function scorplus() {
+  clearInterval(time);
+  timerDiv.style.display = "none";
+  questionDiv.style.display = "none";
+  optionsDiv.style.display = "none";
+  score.innerHTML = newscore
+}
